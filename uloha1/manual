@@ -1,2 +1,2 @@
 Program se spusti v terminalu:
-python algorithms.py nazev_souboru.txt
+python main.py nazev_souboru.txt
