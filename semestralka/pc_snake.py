@@ -49,7 +49,6 @@ class State:
 
     def add_imaginary_food(self):
         """used if is any possible way to real apple"""
-        print("imaginary food")
         for i in range(MAX_TRIES_FIND_SPACE):
             x = random.randrange(self.width)
             y = random.randrange(self.height)
@@ -143,8 +142,6 @@ class State:
             self.snake.move(self.path[0], False)
             self.path.pop(0)
 
-        print("body")
-        print(self.snake.body)
         if self.check_snake_in_wall():
             self.snake.is_alive = False
             return
