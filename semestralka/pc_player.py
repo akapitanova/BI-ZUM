@@ -7,11 +7,26 @@ from constants import *
 window = pyglet.window.Window(width=WINDOW_WIDTH, height=WINDOW_HEIGHT)
 state = State(WIDTH, HEIGHT)
 
+
+class DebugMode:
+    def __init__(self):
+        self.debug_mode = False
+
+    def is_debug(self):
+        return self.debug_mode
+
+    def change_debug(self, val):
+        self.debug_mode = val
+
+
+debug_mode = DebugMode()
+
 snake_tiles = {}
 TILES_DIR = Path('snake-tiles')
 for path in TILES_DIR.glob('*.png'):
     snake_tiles[path.stem] = pyglet.image.load(path)
 apple_image = pyglet.image.load('img/apple.png')
+dot_image = pyglet.image.load('img/dot.png')
 
 
 def make_snake(snake):
@@ -57,6 +72,11 @@ def on_draw():
             to = 'dead'
         snake_tiles[fr + '-' + to].blit(x * TILE_SIZE, y * TILE_SIZE,
                      width=TILE_SIZE, height=TILE_SIZE)
+
+    if state.path != 'kill' and debug_mode.is_debug():
+        for x, y in state.path:
+            dot_image.blit(x * TILE_SIZE, y * TILE_SIZE, width=TILE_SIZE, height=TILE_SIZE)
+
     for x, y in state.food:
         apple_image.blit(x * TILE_SIZE, y * TILE_SIZE, width=TILE_SIZE, height=TILE_SIZE)
     label = pyglet.text.Label(str(state.score),
@@ -72,7 +92,14 @@ def move(dt):
 
 @window.event
 def on_key_press(symbol, mod):
-    return
+    if symbol == pyglet.window.key.SPACE:
+        if not debug_mode.is_debug():
+            debug_mode.change_debug(True)
+            return
+        else:
+            debug_mode.change_debug(False)
+            return
+
 
 
 pyglet.clock.schedule_interval(move, TIME_TO_MOVE)

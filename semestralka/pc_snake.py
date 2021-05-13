@@ -48,7 +48,7 @@ class State:
                 return
 
     def add_imaginary_food(self):
-        """used if is any possible way to real apple"""
+        """used if is not any possible way to real apple"""
         for i in range(MAX_TRIES_FIND_SPACE):
             x = random.randrange(self.width)
             y = random.randrange(self.height)
@@ -80,12 +80,11 @@ class State:
         return False
 
     def kill_snake(self):
-        while True:
-            head_neigh = neighbours(self.snake.body, self.snake.get_head(), self.width, self.height)
-            if len(head_neigh) == 0:
-                self.snake.is_alive = False
-                return
-            self.snake.move(head_neigh[0], False)
+        head_neigh = neighbours(self.snake.body, self.snake.get_head(), self.width, self.height)
+        if len(head_neigh) == 0:
+            self.snake.is_alive = False
+            return
+        self.snake.move(head_neigh[0], False)
 
     def algorithm(self, food):
         if ALGORITHM is A_STAR:
@@ -107,6 +106,7 @@ class State:
         while len(self.path) == 0:
             if counter > MAX_TRIES_FIND_PATH:
                 self.kill_snake()
+                print("kill max")
                 return
             imaginary_food = self.add_imaginary_food()
             self.algorithm(imaginary_food)
@@ -116,15 +116,21 @@ class State:
 
         if not self.snake.is_alive:
             return
-
-        if len(self.path) == 0:
+            
+        if self.path == "kill":
+            self.algorithm(self.food[0])
+            if len(self.path) == 0 or self.path == "kill":
+                print("kill 0")
+                self.path = "kill"
+                self.kill_snake()
+                return
+        else:
             self.algorithm(self.food[0])
 
-            if len(self.path) == 0:
-                self.eat_imaginary_food()
-                if self.path == "kill":
-                    self.kill_snake()
-                    return
+        if len(self.path) == 0 or self.path == "kill":
+            self.eat_imaginary_food()
+            if self.path == "kill":
+                return
 
         if not self.snake.is_alive:
             return
@@ -133,12 +139,8 @@ class State:
             self.eat_apple()
             self.algorithm(self.food[0])
             if self.path == "kill":
-                self.kill_snake()
                 return
         else:
-            if self.path == "kill":
-                self.kill_snake()
-                return
             self.snake.move(self.path[0], False)
             self.path.pop(0)
 
