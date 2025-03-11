@@ -45,6 +45,8 @@ The implemented algorithms include:
    git clone https://github.com/your-repo/pathfinding-algorithms.git
    cd pathfinding-algorithms
 
+---
+
 ## 🚗 Travelling Salesman Problem (TSP)
 
 ### 📌 Overview
@@ -66,8 +68,6 @@ The problem can be represented as an **undirected graph** **G = (V, A)**, where:
 
 The goal is to find the **shortest Hamiltonian cycle**, a path that visits each city **exactly once** and returns to the start.
 
----
-
 ### Solving TSP using the Hill-Climbing Algorithm
 
 ### Key Objectives:
@@ -76,8 +76,6 @@ The goal is to find the **shortest Hamiltonian cycle**, a path that visits each 
 - Explore different **neighborhood variants** for state transitions.
 - Implement a method for **enumerating neighboring states**.
 - Introduce a mechanism to **escape local optima**, such as **random restarts**.
-
----
 
 ### Algorithm Configuration
 
@@ -90,8 +88,6 @@ The following parameters can be adjusted:
   - **Variant 2**: Swaps only adjacent cities.
 - **Maximum Iterations**: Controls the limit for optimization steps.
 - **Maximum Restarts**: Defines the number of attempts to escape local optima.
-
----
 
 ### Implementation Details
 
