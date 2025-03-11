@@ -39,12 +39,6 @@ The implemented algorithms include:
 - Python 3.x
 - Required modules: `sys`, `os`, `re`, `time`, `random`, `collections`
 
-### Installation
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/your-repo/pathfinding-algorithms.git
-   cd pathfinding-algorithms
-
 ---
 
 ## 🚗 Travelling Salesman Problem (TSP)
