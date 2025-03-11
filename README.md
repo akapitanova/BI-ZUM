@@ -4,14 +4,15 @@ This repository contains three projects from a course BI-ZUM, focusing on **sear
 
 ---
 
-## 1️⃣ **Pathfinding Algorithms Implementation**  
+## 1️⃣ **[Pathfinding Algorithms Implementation](./uloha1/)**  
 This project explores **pathfinding algorithms** for navigating a **grid-based environment**. It loads a **map**, processes the **start and end positions**, and applies **various search algorithms** to find the optimal path.  
 
-## 2️⃣ **Travelling Salesman Problem (TSP) using Hill-Climbing**  
+## 2️⃣ **[Travelling Salesman Problem (TSP) using Hill-Climbing](./uloha2/)**  
 This project solves the **Travelling Salesman Problem (TSP)** using the **Hill-Climbing algorithm**, an **iterative improvement method** for optimization problems. The goal is to find the shortest possible route that visits each city exactly once and returns to the starting point.  
 
-## 3️⃣ **Intelligent Snake Game AI**   
+## 3️⃣ **[Intelligent Snake Game AI](./semestralka/)**   
 This project implements an **AI-controlled Snake agent** that intelligently **navigates a 2D grid**, collects food, and avoids collisions. The agent applies **heuristic search algorithms** to calculate the best moves, ensuring **long-term survival and strategic decision-making**.  
+📄 **For detailed analysis and results, see this report: [dokumentace.pdf](./semestralka/dokumentace.pdf)**
 
 ---
 
